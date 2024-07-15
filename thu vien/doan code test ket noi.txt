@@ -1,0 +1,26 @@
+try {
+            String user="sa";
+            String pass="123456";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url="jdbc:sqlserver://localhost:1433;databaseName=QLSINHVIEN";
+            con = DriverManager.getConnection(url, user,pass);
+            if(con!=null)
+            { JOptionPane.showMessageDialog(null, "kết nối thành công");
+            String sql="select * from sinhvien";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+        
+            while(rs.next()){
+
+                JOptionPane.showMessageDialog(null, rs.getString("masv"));
+       
+                           }
+            }
+            con.close();
+           // JOptionPane.showMessageDialog(null, ds.size());
+       }  catch (SQLException ex)
+       {
+            Logger.getLogger(democonnect.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(democonnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
